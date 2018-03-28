@@ -7,7 +7,8 @@
     <hr>
     <p>{!! str_replace('
 ' ,'<br>' ,str_replace(' ','&nbsp;', $post->body)) !!}</p>
-    
+
+    @auth
     <hr>
     <form class="text-right" action="{{route('blog.destroy', ['id' => $post->id])}}" method="POST">
     Admin actions<br>
@@ -16,4 +17,5 @@
     <a href="{{route('blog.edit', ['id' => $post->id])}}" class="btn btn-success">Edit Post</a>
     <button type="submit" class="btn btn-danger">Delete Post</button>
     </form>
+    @endauth
 @endsection

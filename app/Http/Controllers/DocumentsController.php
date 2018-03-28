@@ -2,24 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Document;
 use Illuminate\Http\Request;
-use App\Blog;
 
-class BlogController extends Controller
+class DocumentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
-
     public function index()
     {
-        return view('blog.index')->with('posts', Blog::all());
+        //
     }
 
     /**
@@ -29,7 +28,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        //
     }
 
     /**
@@ -40,19 +39,22 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'body' => 'required'
+            'name' => 'required',
+            'url' => 'required',
+            'type' => 'required'
         ]);
 
-        $post = new Blog;
-        $post->title = $request->input('title');
-        $post->author = $request->input('author');
-        $post->body = $request->input('body');
-        $post->save();
+        $doc = new Document;
+        $doc->name = $request->input('name');
+        $doc->url = $request->input('url');
+        $doc->type = $request->input('type');
+        $doc->date = (($request->exists('date'))?$request->input('date'):'');        
+        $doc->save();
 
-        return redirect()->route('blog.show', ['id' => $post->id]);
+        return redirect()->route('admin');
+
 
     }
 
@@ -64,7 +66,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        return view('blog.show')->with('post', Blog::find($id));
+        //
     }
 
     /**
@@ -75,7 +77,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        return view('blog.edit')->with('post', Blog::find($id));
+        //
     }
 
     /**
@@ -87,19 +89,22 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'body' => 'required'
+            'name' => 'required',
+            'url' => 'required',
+            'type' => 'required'
         ]);
 
-        $post = Blog::find($id);
-        $post->title = $request->input('title');
-        $post->author = $request->input('author');
-        $post->body = $request->input('body');
-        $post->save();
+        $doc = Document::find($id);
+        $doc->name = $request->input('name');
+        $doc->url = $request->input('url');
+        $doc->type = $request->input('type');
+        $doc->date = (($request->exists('date'))?$request->input('date'):'');
+        $doc->save();
 
-        return redirect()->route('blog.show', ['id' => $id]);
+        return redirect()->route('admin');
+
     }
 
     /**
@@ -110,8 +115,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        // return $id;
-        $post = Blog::find($id)->delete();
-        return redirect()->route('blog.index')->with('success', 'Post Deleted Successfully!');
+        //
+        $doc = Document::find($id)->delete();
+        return redirect()->route('admin');
+
     }
 }

@@ -15,6 +15,16 @@ Route::get('/SLC/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/SLC/constitution', function () {
+    return view('other.constitution');
+})->name('constitution');
+
+Route::get('/SLC/members', function () {
+    return view('other.members');
+})->name('members');
+
+
+
 Route::resource('/SLC/blog', 'BlogController', 
 [
     'names' => [
@@ -29,10 +39,6 @@ Route::resource('/SLC/blog', 'BlogController',
 ]);
 
 // 
-Route::get('/SLC/constitution', function () {
-    return view('other.constitution');
-})->name('constitution');
-
 Route::get('/SLC/documents', function () {
     return view('other.documents');
 })->name('documents');
@@ -58,11 +64,45 @@ Route::get('/SLC/contact', function () {
 })->name('contact');
 
 
-Route::get('/SLC/about', function () {
-    return view('other.about');
-})->name('about');
+// Route::get('/SLC/about', function () {
+//     return view('other.about');
+// })->name('about');
 
 
-Route::get('/admin', function() {
-    return view('admin.home');
+Route::get('/SLC/admin', function() {
+    return view('admin.admin');
 })->name('admin');
+
+// Auth::routes();
+
+Route::get('/SLC/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/SLC/login', 'Auth\LoginController@login');
+Route::get('/SLC/logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+// Route::get('/SLC/register', 'Auth\AuthController@showRegistrationForm')->name('register');
+// Route::post('/SLC/register', 'Auth\AuthController@register');
+
+// Password Reset Routes...
+// Route::get('/SLC/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+// Route::post('/SLC/password/email', 'Auth\PasswordController@sendResetLinkEmail');
+// Route::post('/SLC/password/reset', 'Auth\PasswordController@reset');
+
+// Route::get('/SLC/home', 'HomeController@index')->name('home');
+
+// Route::post('/SLC/doc/add', 'AdminController@doc_add')->name('doc.add');
+// Route::put('/SLC/doc/{$id}/edit/', 'AdminController@doc_udpate')->name('doc.edit');
+// Route::delete('/SLC/doc/{$id}', 'AdminController@doc_delete')->name('doc.delete');
+
+Route::resource('/SLC/doc', 'DocumentsController', 
+[   'only' => ['store', 'update', 'destroy'],
+    'names' => [
+        // 'index'     => 'doc.index',
+        // 'create'    => 'doc.create',
+        'store'     => 'doc.store',
+        // 'show'      => 'doc.show',
+        // 'edit'      => 'doc.edit',
+        'update'    => 'doc.update',
+        'destroy'   => 'doc.destroy'
+    ]
+]);

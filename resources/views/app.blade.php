@@ -12,7 +12,7 @@
         
     <div class="container">
             @include('messages')
-        @section('content') 
+        @section('content')
         @show        
     </div>
 

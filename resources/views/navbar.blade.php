@@ -15,17 +15,23 @@
                 <li>
                     <a href="{{route('blog.index')}}">Blog</a>
                 </li>
-                <li class="dropdown">
+                <li>
+                    <a href="{{route('constitution')}}">Constitution</a>
+                </li>
+                <li>
+                    <a href="{{route('members')}}">Members</a>
+                </li>
+                <li>
+                    <a href="{{route('documents')}}">Documents</a>
+                </li>
+                <li>
+                    <a href="{{route('gallery')}}">Gallery</a>
+                </li>
+                {{-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Quick Links
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{route('constitution')}}">Constitution</a>
-                        </li>
-                        <li>
-                            <a href="{{route('documents')}}">Other Documents</a>
-                        </li>
                         <li class="divider"></li>
                         <li>
                             <a href="{{route('minutes')}}">Minutes</a>
@@ -34,14 +40,8 @@
                             <a href="{{route('finances')}}">Finances</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="{{route('gallery')}}">Gallery</a>
-                        </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="{{route('contact')}}">Contact</a>
-                </li>
+                </li> --}}
                 </ul>
             <!-- <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -51,8 +51,22 @@
             </form> -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{route('about')}}">About</a>
+                    <a href="{{route('contact')}}">Contact</a>
                 </li>
+                <li>
+                @if (Route::has('login'))
+                    @auth
+                    <a href="{{ route('admin') }}">Admin Home</a>
+                </li>
+                    {{-- @else --}}
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                        @endauth
+                @endif
+                </li>
+                {{-- <li>
+                    <a href="{{route('about')}}">About</a>
+                </li> --}}
                 <li>
                     <a href="http://www.iitm.ac.in"> IIT Madras
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/69/IIT_Madras_Logo.svg/1200px-IIT_Madras_Logo.svg.png" width="17px">
@@ -62,15 +76,4 @@
         </div>
     </div>
 </nav>
-
-    <!-- @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif -->
 
