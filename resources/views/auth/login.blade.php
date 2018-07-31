@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-push-2">
             {{-- <div class="card"> --}}
                 <legend class="text-center">Login</legend>
-                <hr>
+                {{-- <hr> --}}
                 {{-- <div class="card-body"> --}}
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -41,18 +41,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 col-md-push-4">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                     </label>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-lg">
                                     Login
                                 </button>
 

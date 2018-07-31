@@ -3,7 +3,9 @@
 @section('content')
     <h2>
         Blog - SLC Website
+        @auth
         <a href="{{route('blog.create')}}" class="btn btn-info">Create New Post</a>
+        @endauth
     </h2>
     <hr>
     <div class="list-group">

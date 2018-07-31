@@ -69,9 +69,7 @@ Route::get('/SLC/contact', function () {
 // })->name('about');
 
 
-Route::get('/SLC/admin', function() {
-    return view('admin.admin');
-})->name('admin');
+Route::get('/SLC/admin', 'AdminController@index')->name('admin');
 
 // Auth::routes();
 
@@ -104,5 +102,18 @@ Route::resource('/SLC/doc', 'DocumentsController',
         // 'edit'      => 'doc.edit',
         'update'    => 'doc.update',
         'destroy'   => 'doc.destroy'
+    ]
+]);
+
+Route::resource('/SLC/mem', 'MembersController', 
+[   'only' => ['store', 'update', 'destroy'],
+    'names' => [
+        // 'index'     => 'mem.index',
+        // 'create'    => 'mem.create',
+        'store'     => 'mem.store',
+        // 'show'      => 'mem.show',
+        // 'edit'      => 'mem.edit',
+        'update'    => 'mem.update',
+        'destroy'   => 'mem.destroy'
     ]
 ]);

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Document;
+use App\Person;
 use Illuminate\Http\Request;
 
-class DocumentsController extends Controller
+class MembersController extends Controller
 {
     public function __construct()
     {
@@ -40,20 +40,23 @@ class DocumentsController extends Controller
     public function store(Request $request)
     {
         //
+
         $request->validate([
             'name' => 'required',
-            'url' => 'required',
+            'designation' => 'required',
             'type' => 'required'
         ]);
 
-        $doc = new Document;
-        $doc->name = $request->input('name');
-        $doc->url = $request->input('url');
-        $doc->type = $request->input('type');
-        $doc->date = (($request->exists('date'))?$request->input('date'):'');        
-        $doc->save();
+        $person = new Person;
+        $person->name = $request->input('name');
+        $person->designation = $request->input('designation');
+        $person->type = $request->input('type');
+        $person->emailID = $request->input('emailID');
+        $person->contact = $request->input('contact');
+        // $person->date = (($request->exists('date'))?$request->input('date'):'');
+        $person->save();
 
-        return redirect()->route('admin', ['view' => 'doc']);
+        return redirect()->route('admin', ['view' => 'mem']);
 
     }
 
@@ -91,18 +94,20 @@ class DocumentsController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            'url' => 'required',
+            'designation' => 'required',
             'type' => 'required'
         ]);
 
-        $doc = Document::find($id);
-        $doc->name = $request->input('name');
-        $doc->url = $request->input('url');
-        $doc->type = $request->input('type');
-        $doc->date = (($request->exists('date'))?$request->input('date'):'');
-        $doc->save();
+        $person = Person::find($id);
+        $person->name = $request->input('name');
+        $person->designation = $request->input('designation');
+        $person->type = $request->input('type');
+        $person->emailID = $request->input('emailID');
+        $person->contact = $request->input('contact');
+        // $doc->date = (($request->exists('date'))?$request->input('date'):'');
+        $person->save();
 
-        return redirect()->route('admin', ['view' => 'doc']);
+        return redirect()->route('admin', ['view' => 'mem']);
 
     }
 
@@ -115,9 +120,9 @@ class DocumentsController extends Controller
     public function destroy($id)
     {
         //
-        $doc = Document::find($id)->delete();
+        $doc = Person::find($id)->delete();
 
-        return redirect()->route('admin', ['view' => 'doc']);
+        return redirect()->route('admin', ['view' => 'mem']);
 
     }
 }
