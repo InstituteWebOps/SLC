@@ -11,21 +11,21 @@
 |
 */
 
-Route::get('/SLC/', function () {
+Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/SLC/constitution', function () {
+Route::get('/constitution', function () {
     return view('other.constitution');
 })->name('constitution');
 
-Route::get('/SLC/members', function () {
+Route::get('/members', function () {
     return view('other.members');
 })->name('members');
 
 
 
-Route::resource('/SLC/blog', 'BlogController', 
+Route::resource('/blog', 'BlogController', 
 [
     'names' => [
         'index'     => 'blog.index',
@@ -39,60 +39,60 @@ Route::resource('/SLC/blog', 'BlogController',
 ]);
 
 // 
-Route::get('/SLC/documents', function () {
+Route::get('/documents', function () {
     return view('other.documents');
 })->name('documents');
 
 
-Route::get('/SLC/minutes', function () {
+Route::get('/minutes', function () {
     return view('other.minutes');
 })->name('minutes');
 
-Route::get('/SLC/finances', function () {
+Route::get('/finances', function () {
     return view('other.finances');
 })->name('finances');
 
 
-Route::get('/SLC/gallery', function () {
+Route::get('/gallery', function () {
     return view('other.gallery');
 })->name('gallery');
 // 
 
 
-Route::get('/SLC/contact', function () {
+Route::get('/contact', function () {
     return view('other.contact');
 })->name('contact');
 
 
-// Route::get('/SLC/about', function () {
+// Route::get('/about', function () {
 //     return view('other.about');
 // })->name('about');
 
 
-Route::get('/SLC/admin', 'AdminController@index')->name('admin');
+Route::get('/admin', 'AdminController@index')->name('admin');
 
 // Auth::routes();
 
-Route::get('/SLC/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('/SLC/login', 'Auth\LoginController@login');
-Route::get('/SLC/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-// Route::get('/SLC/register', 'Auth\AuthController@showRegistrationForm')->name('register');
-// Route::post('/SLC/register', 'Auth\AuthController@register');
+// Route::get('/register', 'Auth\AuthController@showRegistrationForm')->name('register');
+// Route::post('/register', 'Auth\AuthController@register');
 
 // Password Reset Routes...
-// Route::get('/SLC/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-// Route::post('/SLC/password/email', 'Auth\PasswordController@sendResetLinkEmail');
-// Route::post('/SLC/password/reset', 'Auth\PasswordController@reset');
+// Route::get('/password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+// Route::post('/password/email', 'Auth\PasswordController@sendResetLinkEmail');
+// Route::post('/password/reset', 'Auth\PasswordController@reset');
 
-// Route::get('/SLC/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::post('/SLC/doc/add', 'AdminController@doc_add')->name('doc.add');
-// Route::put('/SLC/doc/{$id}/edit/', 'AdminController@doc_udpate')->name('doc.edit');
-// Route::delete('/SLC/doc/{$id}', 'AdminController@doc_delete')->name('doc.delete');
+// Route::post('/doc/add', 'AdminController@doc_add')->name('doc.add');
+// Route::put('/doc/{$id}/edit/', 'AdminController@doc_udpate')->name('doc.edit');
+// Route::delete('/doc/{$id}', 'AdminController@doc_delete')->name('doc.delete');
 
-Route::resource('/SLC/doc', 'DocumentsController', 
+Route::resource('/doc', 'DocumentsController', 
 [   'only' => ['store', 'update', 'destroy'],
     'names' => [
         // 'index'     => 'doc.index',
@@ -105,7 +105,7 @@ Route::resource('/SLC/doc', 'DocumentsController',
     ]
 ]);
 
-Route::resource('/SLC/mem', 'MembersController', 
+Route::resource('/mem', 'MembersController', 
 [   'only' => ['store', 'update', 'destroy'],
     'names' => [
         // 'index'     => 'mem.index',
