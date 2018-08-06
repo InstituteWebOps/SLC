@@ -53,10 +53,10 @@ Route::get('/finances', function () {
 })->name('finances');
 
 
-Route::get('/gallery', function () {
-    return view('other.gallery');
-})->name('gallery');
-// 
+//Route::get('/gallery', function () {
+//    return view('other.gallery');
+//})->name('gallery');
+
 
 
 Route::get('/contact', function () {
