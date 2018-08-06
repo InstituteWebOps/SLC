@@ -25,7 +25,7 @@
                     <a href="{{route('documents')}}">Documents</a>
                 </li>
                 <!--li>
-                    <a href="{{route('gallery')}}">Gallery</a>
+                    <a href="{{--route('gallery')--}}">Gallery</a>
                 </li-->
                 {{-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Quick Links
