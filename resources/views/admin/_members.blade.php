@@ -27,7 +27,6 @@
             @if($person->type=='constitution')
                 <input type="text" class="form-control" name="type" value="{{$person->type}}" {{($person->type=='constitution'?'readonly':'')}}>
             @else
-                {{-- <select class="form-control" name="type" {{($person->type=='constitution'?'readonly':'')}}> --}}
                 <select class="form-control" name="type">
                 @foreach($types as $t)
                     <option value="{{ucfirst($t)}}" {{($t==$person->type?'selected':'')}}>{{ucfirst($t)}}</option>
@@ -36,27 +35,20 @@
             @endif
             </td>
 
-            {{-- <td>{{Form::select('type', array_combine($types, $types), '', ['class' => 'form-control'])}}</td> --}}
-            {{-- <td><input type="text" class="form-control" name="type" value="{{$person->type}}" {{($person->type=='constitution'?'readonly':'')}}></td> --}}
             <td><input type="text" class="form-control" name="name" value="{{$person->name}}"></td>
             <td><input type="text" class="form-control" name="designation" value="{{$person->designation}}"></td>
             <td><input type="text" class="form-control" name="emailID" value="{{$person->emailID}}"></td>
             <td><input type="text" class="form-control" name="contact" value="{{$person->contact}}"></td>
-            {{-- <td><input type="text" class="form-control" name="date" value="{{$person->date}}"></td> --}}
             <td>
                 <button class="btn btn-warning">Update</button>
             </td>
         {!! Form::close() !!}
 
         <td>
-        {{-- @if($person->type!=='constitution')
         {!!Form::open(['action' => ['MembersController@destroy', $person->id], 'method' => 'POST', 'class' => ''])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-        {!!Form::close()!!} --}}
-        {{-- @else --}}
-            <button class="btn btn-danger" disabled>Delete</button>
-        {{-- @endif --}}
+        {!!Form::close()!!}
         </td>
     </tr>
 @endforeach
